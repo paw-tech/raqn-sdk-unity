@@ -1,0 +1,12 @@
+.hg*
+.DS_Store
+*.sln
+*.userprefs
+*.csproj
+*.csprog
+*.pidb
+*.unitypackage
+*.orig
+Builds/*
+Library/*
+Temp/*
