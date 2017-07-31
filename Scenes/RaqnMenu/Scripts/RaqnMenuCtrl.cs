@@ -185,6 +185,12 @@ namespace RAQN
 
         public void ButtonPlay()
         {
+            GUI_Hide();
+            GUI_SetMessage("Cargando...");
+            gui_avatar.gameObject.SetActive(true);
+            gui_avatar.gameObject.GetComponent<RaqnAvatar>().SetAvatar(login.user.profile.avatar);
+            gui_avatar.GetComponentInChildren<TextMeshProUGUI>().text = "@" + login.user.profile.nickname;
+            gui_loading.gameObject.SetActive(true);
             Raqn.StartPlay();
         }
 
