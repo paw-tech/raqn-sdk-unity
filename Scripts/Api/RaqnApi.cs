@@ -83,7 +83,7 @@ namespace RAQN.Api
 
             yield return _web_req.Send();
 
-            if (_web_req.isError)
+            if (_web_req.isNetworkError)
             {
                 ResponseFailure(_req, "LOCAL_ERR_CONNECTION");
                 yield break;

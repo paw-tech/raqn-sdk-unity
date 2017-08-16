@@ -23,7 +23,7 @@ namespace RAQN
 
         public static DixInfo Load()
         {
-            TextAsset _dixtext = Resources.Load("raqn") as TextAsset;
+            TextAsset _dixtext = Resources.Load("RAQN/dix") as TextAsset;
             DixInfo _dix = null;
             if (_dixtext != null)
             {

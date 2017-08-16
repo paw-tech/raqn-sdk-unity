@@ -97,8 +97,11 @@ namespace RAQN.Play
             string _str_size = SizeToImgSize(_size).ToString();
             Texture2D _tex;
             _tex = new Texture2D(_size, _size, TextureFormat.DXT1, false);
-            _tex.LoadImage(RaqnStorage.GetBytes("RAQN/Graphics/Avatars/RANDOM/" + _str_size + "/RANDOM_" + _str_size + ".png"));
-            return _tex;
+            Texture2D _r = Resources.Load("RAQN/Avatars/RANDOM/" + _str_size + "/RANDOM_" + _str_size) as Texture2D;
+            _r.Apply();
+            //_tex.LoadImage(_r.bytes);
+            _r.Resize(_size,_size, TextureFormat.DXT1, false);
+            return _r;
         }
 
         public Texture2D GetLocalTexture(int _size = 100)
