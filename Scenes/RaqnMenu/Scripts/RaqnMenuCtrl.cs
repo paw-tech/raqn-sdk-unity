@@ -11,6 +11,7 @@ using RAQN.App;
 using RAQN.Serialization;
 using RAQN.Storage;
 using TMPro;
+using UnityEngine.EventSystems;
 
 namespace RAQN
 {
@@ -78,6 +79,17 @@ namespace RAQN
             Screen.orientation = ScreenOrientation.AutoRotation;
         }
 
+        private void Update()
+        {
+            if(Input.GetKeyDown(KeyCode.Return))
+            {
+                if(EventSystem.current.currentSelectedGameObject == gui_input_pass.gameObject || EventSystem.current.currentSelectedGameObject == gui_input_user.gameObject)
+                {
+                    ButtonLogin();
+                }
+            }
+        }
+
         protected override void Start()
         {
             base.Start();
@@ -115,6 +127,7 @@ namespace RAQN
             gui_avatar.GetComponentInChildren<TextMeshProUGUI>().text = "@" + login.user.profile.nickname;
             gui_button_continue.gameObject.SetActive(true);
             gui_button_change.gameObject.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(gui_button_continue.gameObject); //para poder navegar los botones con el teclado
         }
 
         public void State_AskLogin(string _msg, bool _append = false)
@@ -128,6 +141,8 @@ namespace RAQN
             gui_input_user.gameObject.SetActive(true);
             gui_input_pass.gameObject.SetActive(true);
             gui_button_login.gameObject.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(gui_input_user.gameObject); //para poder navegar los botones con el teclado
+
         }
 
         public void ButtonLogin()
@@ -236,6 +251,7 @@ namespace RAQN
             gui_avatar.GetComponentInChildren<TextMeshProUGUI>().text = "@" + login.user.profile.nickname;
             gui_avatar.gameObject.SetActive(true);
             gui_button_play.gameObject.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(gui_button_play.gameObject);
         }
 
         public void State_PlayError(string _error)
